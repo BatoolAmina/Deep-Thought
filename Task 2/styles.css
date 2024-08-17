@@ -1,0 +1,163 @@
+/* Reset some basic styles */
+body, h1, h2, h3, p, pre, code, table, th, td {
+    margin: 0;
+    padding: 0;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+/* Navbar styles */
+.navbar {
+    background-color: black;
+    padding: 15px;
+    color: white;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+/* Spacing for the logo */
+.logo h1 {
+    text-align: left;
+    margin: 0;
+    font-size: 30px;
+}
+
+/* Container layout */
+.container {
+    background-color: #000000;
+    display: flex;
+    margin-top: 40px; /* Adjusted for the fixed navbar */
+}
+
+/* Left navigation pane */
+.side-nav {
+    width: 200px;
+    background-color: #f4f4f4;
+    padding: 20px;
+    border-right: 1px solid #ccc;
+    position: fixed;
+    top: 60px; /* Adjusted for the fixed navbar */
+    bottom: 0;
+    left: 0;
+    overflow-y: auto;
+}
+
+.side-nav h3 {
+    color: #000000;
+    margin-bottom: 15px;
+    font-size: 18px;
+}
+
+.side-nav ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.side-nav ul li {
+    margin-bottom: 15px;
+}
+
+.side-nav ul li a {
+    text-decoration: none;
+    color: #333;
+    font-size: 16px;
+}
+
+.side-nav ul li a:hover, .side-nav ul li a.active {
+    color: #121212;
+    font-weight: bold;
+}
+
+/* Main content area */
+.content {
+    padding: 30px;
+    padding-left: 50px;
+    margin-left: 220px; /* Adjusted for the fixed side-nav */
+    flex-grow: 1;
+}
+
+
+.content .heading h1{
+    color: rgb(251, 251, 124);
+    text-align: center;
+    padding: 15px;
+}
+
+/* Heading and text spacing */
+h2 {
+    font-size: 24px;
+    margin-bottom: 30px;
+    color: wheat;
+}
+
+h3 {
+    font-size: 18px;
+    margin-bottom: 20px;
+    color: #c0bdbd;
+}
+
+p {
+    color: white;
+    margin-bottom: 30px;
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+pre {
+    border-radius: 20px;
+    background-color: rgb(255, 253, 253);
+    color: black;
+    padding: 15px;
+    border-left: 3px solid #ffff03;
+    margin-bottom: 20px;
+    overflow-x: auto;
+}
+
+/* Increase spacing between sections */
+section {
+    margin-bottom: 40px;
+}
+
+/* Table styling */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 25px;
+}
+
+table th, table td {
+    padding: 12px;
+    text-align: left;
+    border: 1px solid #ccc;
+}
+
+table th {
+    background-color: rgb(115, 113, 113);
+    color: white;
+    text-align: center;
+}
+
+table td {
+    background-color: #f9f9f9;
+}
+
+/* Responsive layout */
+@media screen and (max-width: 768px) {
+    .container {
+        flex-direction: column;
+    }
+
+    .side-nav {
+        width: 100%;
+        border-right: none;
+        border-bottom: 1px solid #ccc;
+        position: static;
+    }
+
+    .content {
+        margin-left: 0;
+        padding: 10px;
+    }
+}

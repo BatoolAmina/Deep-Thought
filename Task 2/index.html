@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nudge API Documentation</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Top Navbar -->
+    <header class="navbar">
+        <div class="logo">
+            <h1>Deep Thought</h1>
+        </div>
+    </header>
+
+    <div class="container">
+        <!-- Left Navigation Pane -->
+        <nav class="side-nav">
+            <h3>API Documentation</h3>
+            <ul>
+                <li><a href="#base-url">Base URL</a></li>
+                <li><a href="#create-nudge">Create a Nudge (POST)</a></li>
+                <li><a href="#retrieve-nudge">Retrieve a Nudge (GET)</a></li>
+                <li><a href="#update-nudge">Update a Nudge (PUT)</a></li>
+                <li><a href="#delete-nudge">Delete a Nudge (DELETE)</a></li>
+                <li><a href="#list-nudges">List All Nudges (GET)</a></li>
+                <li><a href="#summary">API Summary</a></li>
+            </ul>
+        </nav>
+
+        <!-- Main Content Area -->
+        <main class="content">
+            <div class="heading">
+                <h1>API Documentation</h1>
+            </div>
+            <section id="base-url">
+                <h2>Base URL</h2>
+                <p>All API requests will be made to the following base URL:</p>
+                <pre><code>https://api.example.com/api/v1/nudges</code></pre>
+            </section>
+
+            <section id="create-nudge">
+                <h2>Create a Nudge (POST)</h2>
+                <p>This endpoint is used to create a new nudge associated with a specific event or article.</p>
+                <h3>Endpoint</h3>
+                <pre><code>/api/v1/nudges</code></pre>
+                <h3>Headers</h3>
+                <pre><code>Content-Type: application/json
+Authorization: Bearer {your_api_key}</code></pre>
+                <h3>Payload</h3>
+                <pre><code>{
+    "eventId": "event-123",
+    "title": "Reminder: Upcoming Workshop",
+    "imageUrl": "https://example.com/image.jpg",
+    "scheduledOn": "2024-08-25T14:00:00Z",
+    "description": "Don't miss the workshop on Reflections.",
+    "invitationText": "Join us for a workshop on Reflections.",
+    "icon": "reminder"
+}</code></pre>
+                <h3>Response</h3>
+                <pre><code>{
+    "nudgeId": "nudge-456",
+    "eventId": "event-123",
+    "title": "Reminder: Upcoming Workshop",
+    "imageUrl": "https://example.com/image.jpg",
+    "scheduledOn": "2024-08-25T14:00:00Z",
+    "description": "Don't miss the workshop on Reflections.",
+    "invitationText": "Join us for a workshop on Reflections.",
+    "icon": "reminder"
+}</code></pre>
+            </section>
+
+            <section id="retrieve-nudge">
+                <h2>Retrieve a Nudge (GET)</h2>
+                <p>This endpoint retrieves details of a specific nudge using its ID.</p>
+                <h3>Endpoint</h3>
+                <pre><code>/api/v1/nudges/{nudgeId}</code></pre>
+                <h3>Headers</h3>
+                <pre><code>Authorization: Bearer {your_api_key}</code></pre>
+                <h3>Response</h3>
+                <pre><code>{
+    "nudgeId": "nudge-456",
+    "eventId": "event-123",
+    "title": "Reminder: Upcoming Workshop",
+    "imageUrl": "https://example.com/image.jpg",
+    "scheduledOn": "2024-08-25T14:00:00Z",
+    "description": "Don't miss the workshop on Reflections.",
+    "invitationText": "Join us for a workshop on Reflections.",
+    "icon": "reminder"
+}</code></pre>
+            </section>
+
+            <section id="update-nudge">
+                <h2>Update a Nudge (PUT)</h2>
+                <p>This endpoint updates the details of an existing nudge.</p>
+                <h3>Endpoint</h3>
+                <pre><code>/api/v1/nudges/{nudgeId}</code></pre>
+                <h3>Headers</h3>
+                <pre><code>Content-Type: application/json
+Authorization: Bearer {your_api_key}</code></pre>
+                <h3>Payload</h3>
+                <pre><code>{
+    "title": "Updated Workshop Reminder",
+    "imageUrl": "https://example.com/new-image.jpg",
+    "scheduledOn": "2024-08-26T15:00:00Z",
+    "description": "Updated: Don't miss the workshop on Reflections.",
+    "invitationText": "Updated: Join us for a workshop on Reflections.",
+    "icon": "reminder-new"
+}</code></pre>
+                <h3>Response</h3>
+                <pre><code>{
+    "nudgeId": "nudge-456",
+    "eventId": "event-123",
+    "title": "Updated Workshop Reminder",
+    "imageUrl": "https://example.com/new-image.jpg",
+    "scheduledOn": "2024-08-26T15:00:00Z",
+    "description": "Updated: Don't miss the workshop on Reflections.",
+    "invitationText": "Updated: Join us for a workshop on Reflections.",
+    "icon": "reminder-new"
+}</code></pre>
+            </section>
+
+            <section id="delete-nudge">
+                <h2>Delete a Nudge (DELETE)</h2>
+                <p>This endpoint deletes a nudge by its ID.</p>
+                <h3>Endpoint</h3>
+                <pre><code>/api/v1/nudges/{nudgeId}</code></pre>
+                <h3>Headers</h3>
+                <pre><code>Authorization: Bearer {your_api_key}</code></pre>
+                <h3>Response</h3>
+                <pre><code>204 No Content</code></pre>
+            </section>
+
+            <section id="list-nudges">
+                <h2>List All Nudges (GET)</h2>
+                <p>This endpoint retrieves a list of all nudges, with pagination options.</p>
+                <h3>Endpoint</h3>
+                <pre><code>/api/v1/nudges</code></pre>
+                <h3>Headers</h3>
+                <pre><code>Authorization: Bearer {your_api_key}</code></pre>
+                <h3>Query Parameters</h3>
+                <pre><code>?type=latest&limit=10&page=1</code></pre>
+                <h3>Response</h3>
+                <pre><code>[
+    {
+        "nudgeId": "nudge-456",
+        "eventId": "event-123",
+        "title": "Reminder: Upcoming Workshop",
+        "imageUrl": "https://example.com/image.jpg",
+        "scheduledOn": "2024-08-25T14:00:00Z",
+        "description": "Don't miss the workshop on Reflections.",
+        "invitationText": "Join us for a workshop on Reflections.",
+        "icon": "reminder"
+    },
+    {
+        "nudgeId": "nudge-789",
+        "eventId": "event-456",
+        "title": "Reminder: Upcoming Webinar",
+        "imageUrl": "https://example.com/webinar-image.jpg",
+        "scheduledOn": "2024-08-30T10:00:00Z",
+        "description": "Join our webinar on Future Technologies.",
+        "invitationText": "Join us for a webinar on Future Technologies.",
+        "icon": "webinar"
+    }
+]</code></pre>
+            </section>
+
+            <section id="summary">
+                <h2>API Summary</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Operation</th>
+                            <th>Method</th>
+                            <th>Endpoint</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Create a Nudge</td>
+                            <td>POST</td>
+                            <td>/api/v1/nudges</td>
+                            <td>Create a new nudge for an event or article.</td>
+                        </tr>
+                        <tr>
+                            <td>Retrieve a Nudge</td>
+                            <td>GET</td>
+                            <td>/api/v1/nudges/{nudgeId}</td>
+                            <td>Retrieve details of a specific nudge.</td>
+                        </tr>
+                        <tr>
+                            <td>Update a Nudge</td>
+                            <td>PUT</td>
+                            <td>/api/v1/nudges/{nudgeId}</td>
+                            <td>Update details of an existing nudge.</td>
+                        </tr>
+                        <tr>
+                            <td>Delete a Nudge</td>
+                            <td>DELETE</td>
+                            <td>/api/v1/nudges/{nudgeId}</td>
+                            <td>Delete a specific nudge.</td>
+                        </tr>
+                        <tr>
+                            <td>List All Nudges</td>
+                            <td>GET</td>
+                            <td>/api/v1/nudges</td>
+                            <td>Retrieve a list of all nudges with pagination.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+        </main>
+    </div>
+
+    <script src="scripts.js"></script>
+</body>
+</html>
